@@ -1,0 +1,2 @@
+#define LGL_CC "Apple LLVM version 7.3.0 (clang-703.0.31)"
+#define LGL_CFLAGS "-Wall -O3 -I../yalsat -DNLGLOG -DNDEBUG -DNCHKSOL -DNLGLDRUPLIG -DNLGLFILES -DNLGLDEMA"

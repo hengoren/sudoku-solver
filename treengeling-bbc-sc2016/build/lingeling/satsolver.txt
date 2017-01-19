@@ -1,0 +1,96 @@
+c Treengeling Cube and Conquer SAT Solver
+c 
+c Version bbc 923038088b727dcc8bd03aa8dfb5013bd03bf8c4
+c 
+c Copyright (C) 2010-2016 Armin Biere JKU Linz Austria.
+c All rights reserved.
+c 
+c released Wed Apr 20 16:11:04 CEST 2016
+c compiled Wed Nov 16 10:38:51 EST 2016
+c 
+c Apple LLVM version 7.3.0 (clang-703.0.31)
+c -Wall -O3 -I../yalsat -DNLGLOG -DNDEBUG -DNCHKSOL -DNLGLDRUPLIG -DNLGLFILES
+c -DNLGLDEMA
+c Darwin TrapBook-Air.local 16.0.0 x86_64
+c 
+c verbose level 0
+c will NOT print statistics for each solver instance
+c will print satisfying assignment
+c 
+c splitting small nodes first (no '-b' option)
+c asymmetric splitting ('--asymmetric')
+c portfolio option fuzzing disabled (no '--portfolio' option)
+c full search/simplification round interval 10
+c no randomization in lookahead
+c 
+c 'sysconf' reports 4 processors online
+c failed to extract core ids from '/proc/cpuinfo'
+c failed to extract physical ids from '/proc/cpuinfo'
+c only 'sysconf' result valid
+c assuming cores = number of processors reported by 'sysconf' = 4
+c maximum 4 workers (no '-t <worker>' option)
+c using one worker for additional parallel solver instance
+c maximum of 24 active nodes (no '-a <nodes>' option)
+c default ratio of split nodes is 50%
+c 
+c assuming compiled in memory size of 12 GB
+c hard memory limit of 12288 MB (no '-g' nor '-m' option)
+c soft memory limit of 4096 MB
+c 
+c default minimum conflict limit of 1000 conflicts
+c default initial conflict limit of 10000 conflicts
+c default maximum conflict limit of 100000 conflicts
+c 
+c default optimization level 10
+c 
+c initializing root solver instance
+c reading 3cnf.cnf
+c found 'p cnf 304 392' header
+c parsed 872 literals in 392 clauses in 0.06 seconds
+c cloning and starting first additional parallel solver instance
+c simplifying root solver instance with optimization level 10
+c YalSAT Version 03r b8cf0fb483228c4217ba26d5864ab0a8848bf8d5
+c root solver instance optimization with result 0 took 0.02 seconds
+c first parallel solver instance wins with result 10 after 0.08 seconds
+s SATISFIABLE
+v -1 -2 3 -4 -5 -6 -7 8 9 -10 -11 -12 -13 14 -15 -16 17 -18 -19 -20 -21 22
+v -23 -24 -25 -26 27 -28 -29 -30 -31 32 -33 -34 -35 36 -37 -38 39 -40 -41
+v 42 -43 -44 45 -46 -47 -48 -49 50 -51 -52 53 -54 -55 -56 -57 -58 -59 60
+v -61 -62 63 -64 65 66 67 -68 -69 70 -71 -72 -73 -74 75 76 77 78 -79 80 81
+v -82 -83 -84 85 86 87 88 -89 90 91 -92 -93 -94 95 96 97 -98 -99 100 -101
+v -102 -103 -104 105 -106 -107 -108 -109 110 111 112 -113 -114 115 116 -117
+v -118 -119 120 121 122 123 -124 125 126 -127 -128 -129 130 131 132 133
+v -134 135 -136 -137 -138 -139 140 141 142 -143 -144 145 146 -147 -148 -149
+v 150 151 152 153 -154 155 -156 -157 -158 -159 160 161 162 -163 -164 165
+v 166 167 168 -169 170 171 -172 -173 -174 175 176 177 -178 -179 180 -181
+v -182 -183 -184 185 -186 -187 -188 -189 190 191 192 -193 -194 195 196 -197
+v -198 -199 200 201 202 203 -204 205 206 207 -208 -209 210 -211 -212 -213
+v -214 215 216 217 218 -219 220 221 -222 -223 -224 225 226 227 -228 -229
+v 230 -231 -232 -233 -234 235 236 237 238 -239 240 241 -242 -243 -244 245
+v 246 247 248 -249 250 251 -252 -253 -254 255 256 257 -258 -259 260 -261
+v -262 -263 -264 265 -266 -267 -268 -269 270 271 272 -273 -274 275 276 -277
+v -278 -279 280 281 282 283 -284 285 286 -287 -288 -289 290 291 292 293
+v -294 295 -296 -297 -298 -299 300 301 302 -303 -304 0
+c 
+c 0 rounds, 0 nodes (0 max), 1 threads (1 max)
+c 0 avg clim, 0 incs, 0 decs, 0 forced, 0 simp
+c 
+c 0.08 wall clock time, 0.03 process time
+c 8% utilization for 3 + 1 worker threads on 4 cores
+c 
+c started 1 additional parallel solver instances
+c 148 units consumed 100% of 148 produced
+c 0 leaf clauses consumed 0% of 0 produced
+c 
+c 0 conflicts, 0 conflicts per second
+c 0 decisions, 0 decisions per second
+c 608 propagations, 0.0 million propagations per second
+c 
+c       0   0% lookaheads         0.00 seconds    0%
+c       0   0% splits             0.00 seconds    0%
+c       1 100% simplifications    0.02 seconds   24%
+c       0   0% searches           0.00 seconds    0%
+c ======================================================
+c       1 100% scheduled jobs     0.08 seconds, 0 MB
+c 
+c result 10
