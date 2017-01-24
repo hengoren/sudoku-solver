@@ -6,7 +6,12 @@
 # 4. re-3CNF the modified CNF
 # 5. test the new 3CNF in the sat-solver
 import os.path
+import re
 
+
+
+#save the path as a string so that the code may be ran by different users
+#path = os.pwd()
 
 
 #fileString = input("Enter the .cnf file you would like to test: ")
@@ -24,11 +29,10 @@ def remove_extra_char(filename):
 	file = open(filename)
 	lines = file.readlines()
 	file.close()
-	f = open(filename, 'r+')
+	f = open(filename, 'w')
 	for line in lines:
 		f.write(line[2:])
-	file.close()
-	return;
+	f.close()
 
 #this function is what determines if our solution will be a critical set
 #if there is no initial solution, we return that it is not unique
@@ -36,10 +40,11 @@ def remove_extra_char(filename):
 #(but not the givens) to our cnf file, re 3cnf it, and rerun it in the sat solver
 #if that yields an unsatisfiable result, then we have determined that our initial solution
 #was the one and only solution
-def is_unique(filename):
-	print 'Running is_uniq on ' + filename
+def is_satisfiable(filename): #is satisfiable and sends to next step
+	print 'Running is_satisfiable on ' + filename
 	file = open(filename)
 	firstLine = file.readline().strip()
+	file.close()
 	if (firstLine == 'UNSATISFIABLE'):
 		print 'NOT UNIQUE'
 	elif (firstLine == 'SATISFIABLE'):
@@ -47,39 +52,38 @@ def is_unique(filename):
 		rerun_sat(filename, 'sud43cnfplusclues1.cnf')
 	else:
 		print 'ERROR, neither unsatisfiable or satisfiable returned'
-	return;
 
 #filename1 being solved.txt and filename2 being sud43cnfplusclues1.cnf
 #now we will begin to create our next .cnf for testing, this functions calls
 #the bulk of our helper methods and does most of the work
 def rerun_sat(filename1, filename2):
 	os.system("cat /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt") #debugging
-	remove_sat(filename1)
-	os.system("cat /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt") #debugging
+	#remove_sat(filename1)
+	
+	#os.system("cat /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt") #debugging
 	os.chdir("/Users/hrre/Documents/School/Fall '16/MATH 499/cnftools-master/")
 	print 'Descending into cnftools-master'
-	gen_alt_sol(filename1)
+	theclues = identify_clues(filename2)
+	thelist = gen_alt_sol(filename1, theclues)
 	os.system("cat /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt") #debugging
 	print os.getcwd() #a check to make sure that we are still in the cnf tools directory
 	os.system("cp /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/cnftools-master/solved.txt")
 	edit_param(filename2)
-	merge_files(filename1, filename2)
-	return;
+	merge_files(filename2, thelist)
 
 #this removes the part of the output that says "SATISFIABLE"
 #we open the file, read it, then for all lines that do not say "SATISFIABLE",
 #we overwrite our file with that line 
-def remove_sat(filename):
-	file = open(filename, 'r')
-	lines = file.readlines()
-	file.close()
-	file = open(filename, 'w')
-	for line in lines:
-		if line!="SATISFIABLE"+"\n":
-			file.write(line)
-	file.close()
-	print 'Opening output... removing the line that says satisfiable...'
-	return;
+#def remove_sat(filename): #remove sat text
+#	file = open(filename, 'r')
+#	lines = file.readlines()
+#	file.close()
+#	file = open(filename, 'w')
+#	for line in lines:
+#		if line!="SATISFIABLE"+"\n":
+#			file.write(line)
+#	file.close()
+#	print 'Opening output... removing the line that says satisfiable...'
 
 #this gets the new clues from the first solution to append to the .cnf
 #this is the step that needs to be modified (and for some reason stopped working)
@@ -90,24 +94,38 @@ def remove_sat(filename):
 #and be able to check the list as another part of the conditional statement
 #Note: the method to check if a member is contained in a list ".index", 
 #will return an 'error', so we will have to use an if-else statement to handle this
-def gen_alt_sol(filename):
-	file = open(filename, 'r')
+def gen_alt_sol(filename, alist):
+	file = open(filename, 'r+')
+	firstLine = file.readline() #makes it so we do not look at the line that says SATISFIABLE
 	lines = file.readlines()
-	file.close()
-	file = open(filename, 'r+')	
-	file.truncate()
+	#file.truncate()
+ 	nums = []
+ 	print "The list from identify_clues is : "
+ 	print alist
  	for line in lines:
 		for word in line.split():
 			if (int(word) > 0 and int(word) < 64):
-				file.write('-'+ word + ' ')
-				print "entered this block and the word is " + word #debugging
-	file.write('0')
-	file.write('anything') #debugging
+				val = alist.index(int(word))
+				if (val > 0):
+					print word + " is not in the list of clues"
+				else:
+					nums.append('-'+ word)
+					print word + " appended to list"					
+				#print "entered this block and the word is " + word #debugging
+	nums.append(0)
+	print "list of nums in gen_alt_sol: " + nums
+	print file
 	file.close()
-	print filename #debugging
-	print 'Modifying solved.txt to include only the numbers between 0 and 64...'
+	print file
+	return nums
+	#file = open(filename, 'r')
+	#lines = file.readlines()
+	#for line in lines:
+	#	print line
+	#file.close()
+	#print filename #debugging
+	#print 'Modifying solved.txt to include only the numbers between 0 and 64...'
 	#os.system("cat /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt") #debugging
-	return;
 
 #this changes the parameters for the .cnf file
 #what this will do is add the correct number of clues in the 
@@ -131,7 +149,6 @@ def edit_param(filename):
 	file1.write(mystring)
 	file1.close()
 	print 'Opening the .cnf file and changing the parameters...'
-	return;
 
 #this adds the clues from the solved.txt
 #to the first line under the params in the .cnf
@@ -139,11 +156,10 @@ def edit_param(filename):
 #(the one that deals with the clauses and such)
 #then we get the string of numbers to add to the function from gen_alt_sol
 #and insert it into the .cnf file. at this point that .cnf file should be ready to go
-def merge_files(filename1, filename2):
-	file1 = open(filename2, 'a')
+def merge_files(filename1, alist):
+	file1 = open(filename1, 'a')
 	file1.seek(1)
-	file = open(filename1, 'rb')
-	file1.write(file.read())
+	file1.write(" ".join(str(n) for n in alist)) 
 	file1.close()
 	file1 = open('sud43cnfplusclues1.cnf', 'r')
 	lines = file1.readlines()
@@ -153,26 +169,42 @@ def merge_files(filename1, filename2):
 		file1.write(line1),
 	file1.close()
 	print 'Finalizing .cnf file...'
-	print 'The modified .cnf file, ' + filename2 + ', is ready to be tested using the sat-solver. It can be found in '
+	print 'The modified .cnf file, ' + filename1 + ', is ready to be tested using the sat-solver. It can be found in '
 	print os.getcwd()
-	return;
+
+def identify_clues(filename):
+	file = open(filename, 'r')
+	firstLine = file.readline()
+	lines = file.readlines()
+	clues = []
+	for line in lines:
+		matchObj = re.match( r'([0-9]*) 0', line, re.M)
+		if matchObj:
+			print "matchObj.group() :", matchObj.group()
+			print "matchObj.group(1) :", matchObj.group(1)
+			if (int(matchObj.group(1)) < 64):
+				clues.append(int(matchObj.group(1)))
+		else:
+				print "no match!!"
+	print clues
+	return clues
 
 
 
 
 # THE ACTUAL CODE THAT IS RAN
 remove_extra_char('solved.txt')
-is_unique('solved.txt')
+is_satisfiable('solved.txt')
 #print 'Converting .cnf to 3cnf..'
 #os.system("/Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/cnftools-master/cnf2kcnf < /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/cnftools-master/sud43cnfplusclues1.cnf > /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\ 499/treengeling-bbc-sc2016/build/lingeling/3cnfNEW.cnf")
 #print 'Sending a copy of the new .cnf file, 3cnfNEW.cnf, to the sat-solver directory...'
-print 'Resetting the files to test again...'
-os.chdir("/Users/hrre/Documents/School/Fall '16/MATH 499/treengeling-bbc-sc2016/build/lingeling/")
+#print 'Resetting the files to test again...'
+#os.chdir("/Users/hrre/Documents/School/Fall '16/MATH 499/treengeling-bbc-sc2016/build/lingeling/")
 #os.system('rm 3cnfNEW.cnf')
-os.chdir("/Users/hrre/Documents/School/Fall '16/MATH 499/cnftools-master/")
-os.system('rm sud43cnfplusclues1.cnf')
-os.system('cp savedfile.cnf sud43cnfplusclues1.cnf')
-os.chdir("/Users/hrre/Documents/School/Fall '16/MATH 499/")
+#os.chdir("/Users/hrre/Documents/School/Fall '16/MATH 499/cnftools-master/")
+#os.system('rm sud43cnfplusclues1.cnf')
+#os.system('cp savedfile.cnf sud43cnfplusclues1.cnf')
+#:os.chdir("/Users/hrre/Documents/School/Fall '16/MATH 499/")
 
 
 
