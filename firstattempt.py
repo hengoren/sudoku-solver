@@ -11,16 +11,17 @@ import re
 
 
 #save the path as a string so that the code may be ran by different users
-#path = os.pwd()
+path = os.getcwd()
+print "PATH:" + path
 
 
 #fileString = input("Enter the .cnf file you would like to test: ")
 # Step 1: Convert to 3CNF
-os.system("/Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/cnftools-master/cnf2kcnf < /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/cnftools-master/sud43cnfplusclues1.cnf > /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\ 499/treengeling-bbc-sc2016/build/lingeling/3cnf.cnf")
+os.system(path + "/cnftools-master/cnf2kcnf < " + path + "/cnftools-master/sud43cnfplusclues1.cnf > " + path + "/treengeling-bbc-sc2016/build/lingeling/3cnf.cnf")
 
 # Step 2: Test satisfiability
 #os.system("cd /Users/hrre/Documents/Fall\\ \\\'16/MATH\\ 499/treengeling-bbc-sc2016/build/lingeling")
-os.system("/Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/treengeling-bbc-sc2016/build/lingeling/treengeling < /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/treengeling-bbc-sc2016/build/lingeling/3cnf.cnf | tail -42 | head -5  > /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt")
+os.system(path + "/treengeling-bbc-sc2016/build/lingeling/treengeling < " + path + "/treengeling-bbc-sc2016/build/lingeling/3cnf.cnf | tail -42 | head -5  > " + path + "/solved.txt")
 
 #file1 = open('solved.txt', 'r')
 
@@ -57,19 +58,20 @@ def is_satisfiable(filename): #is satisfiable and sends to next step
 #now we will begin to create our next .cnf for testing, this functions calls
 #the bulk of our helper methods and does most of the work
 def rerun_sat(filename1, filename2):
-	os.system("cat /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt") #debugging
+	os.system("cat " + path + "/solved.txt") #debugging
 	#remove_sat(filename1)
 	
 	#os.system("cat /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt") #debugging
-	os.chdir("/Users/hrre/Documents/School/Fall '16/MATH 499/cnftools-master/")
+	os.chdir(path + "/cnftools-master/")
 	print 'Descending into cnftools-master'
 	theclues = identify_clues(filename2)
 	thelist = gen_alt_sol(filename1, theclues)
-	os.system("cat /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt") #debugging
-	print os.getcwd() #a check to make sure that we are still in the cnf tools directory
-	os.system("cp /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/cnftools-master/solved.txt")
+	negclues = mult_list_negative(thelist)
+	os.system("cat " + path + "/solved.txt") #debugging
+	print os.getcwd() #a check  to make sure that we are still in the cnf tools directory
+	os.system("cp" + path + "/solved.txt " + path + "/cnftools-master/solved.txt")
 	edit_param(filename2)
-	merge_files(filename2, thelist)
+	merge_files(filename2, negclues)
 
 #this removes the part of the output that says "SATISFIABLE"
 #we open the file, read it, then for all lines that do not say "SATISFIABLE",
@@ -105,15 +107,24 @@ def gen_alt_sol(filename, alist):
  	for line in lines:
 		for word in line.split():
 			if (int(word) > 0 and int(word) < 64):
-				val = alist.index(int(word))
-				if (val > 0):
-					print word + " is not in the list of clues"
-				else:
-					nums.append('-'+ word)
-					print word + " appended to list"					
+				nums.append(int(word))
+				#val = alist.index(int(word))
+				#if (val > 0):
+				#	print word + " is not in the list of clues"
+				#else:
+				#	nums.append('-'+ word)
+				#	print word + " appended to list"					
 				#print "entered this block and the word is " + word #debugging
 	nums.append(0)
-	print "list of nums in gen_alt_sol: " + nums
+	print "list of nums in gen_alt_sol: "
+	print nums
+	newlist = []
+	for elem in alist:
+		if elem in nums:
+			print str(elem) + " is a clue. Remove from list"
+			nums.remove(elem)
+	print "new list: "
+	print nums
 	print file
 	file.close()
 	print file
@@ -126,6 +137,9 @@ def gen_alt_sol(filename, alist):
 	#print filename #debugging
 	#print 'Modifying solved.txt to include only the numbers between 0 and 64...'
 	#os.system("cat /Users/hrre/Documents/School/Fall\\ \\\'16/MATH\\ 499/solved.txt") #debugging
+
+
+
 
 #this changes the parameters for the .cnf file
 #what this will do is add the correct number of clues in the 
@@ -188,6 +202,14 @@ def identify_clues(filename):
 				print "no match!!"
 	print clues
 	return clues
+
+def mult_list_negative(alist):
+	newlist = []
+	for elem in alist:
+		newlist.append(elem * -1)
+	print "entered mult_clues_negative"
+	print newlist
+	return newlist
 
 
 
