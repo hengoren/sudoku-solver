@@ -1,0 +1,44 @@
+c [druplig] druplig checking switched on
+c Lingeling SAT Solver
+c 
+c Version bbc 923038088b727dcc8bd03aa8dfb5013bd03bf8c4
+c 
+c Copyright (C) 2010-2016 Armin Biere JKU Linz Austria.
+c All rights reserved.
+c 
+c released Thu Jul  7 10:21:35 CEST 2016
+c compiled Thu Feb  2 15:50:34 EST 2017
+c 
+c Apple LLVM version 8.0.0 (clang-800.0.42.1)
+c -Wall -O3 -I../druplig -DNLGLOG -DNDEBUG -DNCHKSOL -DNLGLYALSAT -DNLGLFILES
+c -DNLGLDEMA
+c Darwin TrapBook-Air.local 16.0.0 x86_64
+c 
+c reading input file <stdin>
+c no embedded options
+c found 'p cnf 304 384' header
+c [druplig] Druplig Proof Checker and Tracer Version 009
+c [druplig] proof checking disabled
+c [druplig] flushing satisfied clauses disabled
+c [druplig] dumping DRUP trace to file enabled
+c [druplig] tracing original clauses disabled
+c [druplig] abort on failure enabled
+65 0
+1 66 0
+d -65 1 66 0
+-69 0
+70 0
+17 71 0
+d -70 17 71 0
+-74 0
+75 0
+33 76 0
+d -75 33 76 0
+-79 0
+80 0
+49 81 0
+d -80 49 81 0
+-84 0
+85 0
+2 86 0
+d -85 2 86 0

@@ -1,0 +1,16 @@
+c [druplig] druplig checking switched on
+c Lingeling SAT Solver
+c 
+c Version bbc 923038088b727dcc8bd03aa8dfb5013bd03bf8c4
+c 
+c Copyright (C) 2010-2016 Armin Biere JKU Linz Austria.
+c All rights reserved.
+c 
+c released Thu Jul  7 10:21:35 CEST 2016
+c compiled Thu Feb  2 15:50:34 EST 2017
+c 
+c Apple LLVM version 8.0.0 (clang-800.0.42.1)
+c -Wall -O3 -I../druplig -DNLGLOG -DNDEBUG -DNCHKSOL -DNLGLYALSAT -DNLGLFILES
+c -DNLGLDEMA
+c Darwin TrapBook-Air.local 16.0.0 x86_64
+c 

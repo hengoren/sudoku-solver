@@ -1,0 +1,2 @@
+#define LGL_CC "Apple LLVM version 8.0.0 (clang-800.0.42.1)"
+#define LGL_CFLAGS "-Wall -O3 -I../druplig -DNLGLOG -DNDEBUG -DNCHKSOL -DNLGLYALSAT -DNLGLFILES -DNLGLDEMA"

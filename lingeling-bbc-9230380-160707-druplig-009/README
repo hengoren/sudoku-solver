@@ -1,0 +1,10 @@
+Run 
+
+./extract-and-compile.sh
+
+to extract and compile both the 'druplig' library
+and then a copy of 'lingeling' with proof support.
+
+The resutling binaries are then found in 'lingeling/'.
+
+Armin
