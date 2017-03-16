@@ -565,28 +565,28 @@ c
 c avg                  1.3           0.0           0.0           1.3           1.0           0.0
 c std                  0.5           0.0           0.0           0.5           0.0           0.0
 c 
-c    0.005  66% elim
-c    0.002  19% card
-c    0.000   5% unhide
+c    0.003  51% elim
+c    0.002  27% card
+c    0.001  10% unhide
 c 
 c    0.000 < 1% rest (not shown)
 c ==================================
-c    0.008  98% preprocessing   100%
+c    0.006  98% preprocessing   100%
 c    0.000   0% inprocessing      0%
 c ==================================
-c    0.008  98% simplifying
+c    0.006  98% simplifying
 c    0.000   1% search
 c ==================================
-c    0.008 100% all
+c    0.006 100% all
 c 
-c             3 conflicts,         362.9 confs/sec
+c             3 conflicts,         518.8 confs/sec
 c             0 ternaries,           0.0 confs/ternary
 c             0 binaries,            0.0 confs/binary
 c             0 iterations,          0.0 confs/iteration
 c 
 c             0 reductions,          0.0 redus/sec,      0.0 confs/reduction
 c             0 restarts,            0.0 rests/sec,      0.0 confs/restart
-c            23 decisions,        2782.1 decis/sec,      7.7 decis/conflict
-c           198 propagations,    23950.6 props/sec,      8.6 props/decision
+c            23 decisions,        3977.2 decis/sec,      7.7 decis/conflict
+c           198 propagations,    34238.3 props/sec,      8.6 props/decision
 c 
 c 0.0 seconds, 0.3 MB

@@ -40,8 +40,8 @@ def identify_clues(cnffile):
 		if matchObj:
 			if (int(matchObj.group(1)) < 64):
 				clues.append(int(matchObj.group(1)))
-		else:
-			print("No match!")
+		# else:
+		# 	print("No match!")
 	print("identify_clues located these as clues: ")
 	print(clues)
 	return clues
