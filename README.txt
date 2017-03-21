@@ -1,5 +1,7 @@
 README
 
+The overall goal of this project is to determine the statistical properties of n x n Sudoku boards, namely 4x4 and 9x9. This repository will determine the minimal puzzles of a given board using the following directories and scripts.
+
 The cnftools-master directory contains the script (2kcnf) to 3cnf .cnf files.
 
 The lingeling-bbc-9230380-160707-druplig-009 directory contains the druplig package of lingeling to provide unsat certificates.
