@@ -2,21 +2,38 @@ import makecnfclues
 import rulesofsudoku
 import sys
 
-givensinput = sys.argv[1]
-cnfinput = sys.argv[2]
+# textfilename = sys.argv[1]
 
+def get_board_from_file(thefile):
+	boardstring = ""
+	file = open(thefile, 'r')
+	lines = file.readlines()
+	file.close()
+	for line in lines:
+		boardstring += line
+	newboardstring = ""
+	for char in boardstring:
+		if char != "\n":
+			newboardstring += char
+	boardlist = eval(newboardstring)
+	return boardlist
 
-def make_cnf_file(givensfilename, cnffilename):
-	rulesstring = rulesofsudoku.gen_all_rules(2)
-	rulesofsudoku.create_cnf_file(cnffilename, rulesstring)
-	theboard = makecnfclues.get_board_from_file(givensfilename)
-	givens = makecnfclues.generate_corresponding_vals(theboard)
-	numberofgivens = makecnfclues.get_given_count(theboard)
-	makecnfclues.append_givens_to_cnf(givens, cnffilename)
-	makecnfclues.edit_param(numberofgivens, cnffilename)
+# ourboard = get_board_from_file('sampleboard.txt')
+# print ourboard
 
-make_cnf_file(givensinput, cnfinput)
+def text_file_to_board(textfilename):
+	puzzle = get_board_from_file(textfilename)
+	return puzzle
+
 
 
 # p cnf 64 144
 # p cnf 
+
+
+# take a text file and get the board from it
+# find puzzles from that board
+# 	testing the uniqueness of that puzzle
+# 		makes a puzzle into a cnf
+# 		then actually call the code that runs the cnf and test it for uniqueness  
+# 	
