@@ -68,8 +68,8 @@ def gen_alt_sol(solveroutput, fullsolutionlist):
 	for literal in literals:
 		if (int(literal) > 0 and int(literal) < 64):
 			nums.append(int(literal))
-	# print("Solution to puzzle: ")
-	# print(makecnfclues.cnf_vals_to_board(nums))
+	print("Solution to puzzle: ")
+	print(makecnfclues.cnf_vals_to_board(nums))
 	nums.append(0)
 	# print("Solution to puzzle: ")
 	# print(nums)

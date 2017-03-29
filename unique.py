@@ -24,6 +24,7 @@ def make_cnf_file(puzzle, cnffilename):
 #         puzzlestring += (str)val
 #   return puzzlestring
 
+
 def testuniqueness(puzzle):
 	cnfin = "insertname.cnf"
 	make_cnf_file(puzzle, cnfin)
@@ -35,18 +36,17 @@ def testuniqueness(puzzle):
 		scriptfunctions.modify_cnf(output, cnfin)
 		scriptfunctions.run_cnf_and_sat(cnfin, threecnf, output)
 		if (scriptfunctions.is_satisfiable(output)):
-			# print("Puzzle is not unique")
+			print("Puzzle is not unique")
 			# pipe output to new file
 			return False
 		else:
-			# print("Puzzle is unique")
+			print("Puzzle is unique")
 			# pipe output to a new file
 			return True
 	else:
 		print("This was not a valid board.")
 
 # testuniqueness(cnfin, threecnf, output)
-
 
 # cnfin = sys.argv[1]
 # threecnf = "threecnf" + sys.argv[1]
