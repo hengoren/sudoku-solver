@@ -21,3 +21,5 @@ unique.py is the scrip that tests the uniqueness of a given puzzle. A puzzle is 
 scriptfunctions.py is the script that contains the functions that the unique script calls upon. These functions include functions that call the cnf and sat solver (run_cnf_and_sat), determine if a puzzle is satisfiable (is_satisfiable), remove extra characters from the output (remove_extra_char), identifies the given clues in the cnf (identify_clues), generates the actual solution, which is the satisifiabilty assignment for the puzzle without the clues (gen_alt_sol), negate the actual solution (mult_list_neg), edits the parameters of the cnf file (edit_param),  appends the negated solution to the cnf to see if there is another solution (append_sol_cnf), and the function that wraps all of these functions together (modify_cnf).
 
 sampleboard.txt outlines the format for boards/puzzles to be written out as text files. It is one of the two boards for the 4x4 puzzles.
+
+Authors of this project: Harrison Engoren, Austin Herrygers, Caleb Simmons
