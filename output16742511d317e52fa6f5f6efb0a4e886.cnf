@@ -1,0 +1,527 @@
+c Lingeling SAT Solver
+c 
+c Version bbc 923038088b727dcc8bd03aa8dfb5013bd03bf8c4
+c 
+c Copyright (C) 2010-2016 Armin Biere JKU Linz Austria.
+c All rights reserved.
+c 
+c released Thu Jul  7 10:21:35 CEST 2016
+c compiled Thu Feb  2 15:50:34 EST 2017
+c 
+c Apple LLVM version 8.0.0 (clang-800.0.42.1)
+c -Wall -O3 -I../druplig -DNLGLOG -DNDEBUG -DNCHKSOL -DNLGLYALSAT -DNLGLFILES
+c -DNLGLDEMA
+c Darwin TrapBook-Air.local 16.0.0 x86_64
+c 
+c reading input file <stdin>
+c no embedded options
+c found 'p cnf 309 402' header
+c read 309 variables, 402 clauses, 890 literals in 0.00 seconds
+c
+c --abstime=0
+c --activity=0
+c --agility=1
+c --agilitylim=70
+c --bate=1
+c --batewait=2
+c --bca=1
+c --bcaddlimldscale=2
+c --bcamaxeff=10000000
+c --bcaminuse=100
+c --bcawait=2
+c --bkwdocclim=100
+c --bkwdresched=1
+c --bkwdroundlim=7
+c --bkwdscale=100
+c --blkboost=10
+c --blkboostvlim=10000000
+c --blkclslim=1000000
+c --blklarge=1
+c --blkmaxeff=800000000
+c --blkmineff=50000000
+c --blkocclim1=100000
+c --blkocclim=1000000
+c --blkocclim2=10000
+c --blkreleff=100
+c --blkresched=1
+c --blkrtc=0
+c --blksmall=1
+c --blksuccessmaxwortc=6
+c --blksuccessrat=100
+c --block=1
+c --blockwait=1
+c --boost=1
+c --bumpsimp=1
+c --card=1
+c --cardcut=2
+c --cardexpam1=3
+c --cardglue=0
+c --cardignused=0
+c --cardmaxeff=300000000
+c --cardmaxlen=1000
+c --cardmineff=2000000
+c --cardminlen=3
+c --cardocclim1=300
+c --cardocclim2=15
+c --cardreleff=5
+c --cardreschedint=10
+c --carduse=2
+c --cardwait=0
+c --classify=2
+c --cce2wait=1
+c --cce=3
+c --cce3wait=2
+c --cceateint=2
+c --cceboost=10
+c --cceboostdel=3
+c --cceboostint=5
+c --cceboostvlim=10000000
+c --ccemaxeff=2147483647
+c --ccemaxround=3
+c --ccemineff=30000000
+c --ccereleff=50
+c --ccertc=0
+c --ccertcint=15
+c --ccertcintvlim=2000000
+c --ccesuccessrat=100
+c --ccewait=2
+c --check=0
+c --clim=-1
+c --compact=0
+c --deco=1
+c --deco1opt=1
+c --decolim=100
+c --decompose=1
+c --defragfree=50
+c --defragint=10000000
+c --delmax=10
+c --dlim=-1
+c --druplig=0
+c --drupligcheck=0
+c --drupligtrace=1
+c --drupligtraceorig=0
+c --elim=1
+c --elmaxeff=800000000
+c --elmblk=1
+c --elmblkwait=1
+c --elmboost=20
+c --elmboostdel=3
+c --elmboostint=5
+c --elmboostvlim=4000000
+c --elmclslim=1000000
+c --elmfull=0
+c --elmineff=20000000
+c --elmlitslim=200
+c --elmocclim1=1000
+c --elmocclim=1000000
+c --elmocclim2=100
+c --elmoccsumforced=0
+c --elmreleff=200
+c --elmresched=0
+c --elmroundlim=3
+c --elmrtc=0
+c --elmrtcint=10
+c --elmrtcintvlim=500000
+c --elmotfstr=1
+c --elmotfsub=1
+c --elmsuccessmaxwortc=4
+c --elmsuccessrat=100
+c --exitonabort=0
+c --factmax=100000
+c --factor=3
+c --features=0
+c --gauss=1
+c --gausscardweak=1
+c --gaussexptrn=1
+c --gaussextrall=1
+c --gaussmaxeff=50000000
+c --gaussmaxor=20
+c --gaussmineff=2000000
+c --gaussreleff=2
+c --gausswait=2
+c --gluekeep=4
+c --gluekeepsize=15
+c --gluemacdfast=5
+c --gluemacdslow=16
+c --gluemacdsmooth=3
+c --gluescale=4
+c --hbrdom=2
+c --import=1
+c --incredcint=1
+c --incredconfslim=0
+c --incsavevisits=0
+c --inprocessing=1
+c --irrlim=1
+c --itsmacdfast=12
+c --itsmacdslow=18
+c --itsmacdsmooth=10
+c --jlevelmacdfast=12
+c --jlevelmacdslow=14
+c --jlevelmacdsmooth=10
+c --jwhred=1
+c --keepmaxglue=1
+c --keepmaxglueint=1
+c --lhbr=1
+c --lkhd=2
+c --locs=0
+c --locsbanner=0
+c --locsboost=2
+c --locscint=10000
+c --locsclim=1000000
+c --locset=2
+c --locsexport=1
+c --locsmaxeff=100000
+c --locsmineff=1000
+c --locsred=0
+c --locsreleff=5
+c --locsrtc=0
+c --locsvared=100
+c --locswait=2
+c --log=-1
+c --maxscaledglue=15
+c --memlim=-1
+c --minimize=2
+c --minlocalgluelim=200
+c --minlocalsizelim=3000
+c --minrecgluelim=100
+c --minrecsizelim=1000
+c --move=2
+c --otfs=1
+c --penmax=4
+c --phase=0
+c --phaseluckfactor=200
+c --phaselucklim=100
+c --phaseluckmaxround=10
+c --phasesave=1
+c --plain=0
+c --plim=-1
+c --poison=1
+c --prbasic=1
+c --prbasicmaxeff=400000000
+c --prbasicmineff=1000000
+c --prbasicreleff=50
+c --prbasicroundlim=8
+c --prbasicrtc=0
+c --prbrtc=0
+c --prbsimple=2
+c --prbsimpleboost=10
+c --prbsimpleliftdepth=2
+c --prbsimplemaxeff=200000000
+c --prbsimplemineff=2000000
+c --prbsimplereleff=40
+c --prbsimplertc=0
+c --probe=1
+c --profile=1
+c --profilelong=0
+c --promote=1
+c --promotegluelim=8
+c --pure=1
+c --quatres=1
+c --quatreswait=2
+c --queuesort=1
+c --randec=0
+c --randecint=1000
+c --redcls=1
+c --redclsglue=6
+c --redclsize=30
+c --redclsmaxdec=5
+c --redclsmaxdepth=10
+c --redclsmaxlrg=10
+c --redclsmaxprops=100
+c --redclstype=4
+c --reduce=1
+c --reducefixed=0
+c --reduceinc=300
+c --reduceinit=2000
+c --reducereset=0
+c --restart=1
+c --restartfixed=0
+c --restartblock=0
+c --restartblocklim=200
+c --restartblockbound=10000
+c --restartcheckforced=1
+c --restartdelay=1
+c --restartdelaylim=50
+c --restartint=10
+c --restartforcelim=115
+c --restartforcemode=1
+c --restartpen1=1
+c --restartpen2=1
+c --restartpen3=1
+c --restartpenstab=1
+c --retireint=4
+c --retiremin=1
+c --retirenb=1
+c --reusetrail=1
+c --rmincpen=4
+c --scincinc=250
+c --scincincdelta=10
+c --scincincincint=100000
+c --scincincmin=50
+c --scincincmode=1
+c --scoreshift=24
+c --seed=0
+c --simpbintinc=100
+c --simpbintinclim=10000
+c --simpcintdelay=2000
+c --simpcintinc=20000
+c --simpcintincdiv=1
+c --simpcintmaxhard=10000000
+c --simpcintmaxsoft=1000000
+c --simpidiv=3
+c --simpincdelmaxfact=50
+c --simpincdelmaxmin=10000
+c --simpinitdelay=0
+c --simpintsizepen=0
+c --simpiscale=100
+c --simpitdelay=10
+c --simpjleveldecdelay=1
+c --simpitintdecdelay=1
+c --simpitintinc=10
+c --simpitintinclim=1000
+c --simplify=2
+c --simprtc=5
+c --simptintinc=1000
+c --simptintinclim=10000
+c --simpvarchg=100
+c --simpvarlim=100
+c --sizemaxpen=5
+c --sizepen=1000000
+c --sleeponabort=0
+c --smallirr=90
+c --smallve=1
+c --smallvevars=12
+c --smallvewait=0
+c --sortlits=0
+c --stabema=7
+c --subl=0
+c --sweep=1
+c --sweepboost=10
+c --sweepboostdel=4
+c --sweepboostint=7
+c --sweepboostvlim=1000000
+c --sweepfacdec=10
+c --sweepforgive=2
+c --sweepirr=3
+c --sweepmaxdec=10000
+c --sweepmaxeff=200000000
+c --sweepmaxround=3
+c --sweepmindec=100
+c --sweepmineff=1000000
+c --sweepred=3
+c --sweepreleff=3
+c --sweeprtc=0
+c --sweeprtcint=14
+c --sweeprtcintvlim=100000
+c --sweepsuccessmaxwortc=6
+c --sweepsuccessrat=1000
+c --sweepwait=2
+c --synclsall=1
+c --synclsglue=8
+c --synclsint=100
+c --synclslen=40
+c --syncunint=111111
+c --termint=122222
+c --ternres=1
+c --ternresboost=5
+c --ternresrtc=0
+c --ternreswait=2
+c --tlevelema=12
+c --transred=1
+c --transredwait=2
+c --trapiflush=0
+c --trdmaxeff=2000000
+c --trdmineff=100000
+c --trdreleff=10
+c --treelook=1
+c --treelookboost=10
+c --treelookfull=0
+c --treelookmaxeff=50000000
+c --treelookmineff=300000
+c --treelookreleff=2
+c --treelookrtc=0
+c --trep=1
+c --trepint=55555
+c --trnreleff=10
+c --trnrmaxeff=200000000
+c --trnrmineff=4000000
+c --unhdatrn=2
+c --unhdextstamp=1
+c --unhdhbr=0
+c --unhdlnpr=3
+c --unhdmaxeff=20000000
+c --unhdmineff=100000
+c --unhdreleff=2
+c --unhdroundlim=20
+c --unhide=1
+c --unhidewait=0
+c --usedtwice=1
+c --verbose=1
+c --wait=1
+c --waitmax=4
+c --witness=1
+c [freezer] frozen 0 variables out of 199 free variables 0%
+c [limits] no decision limit
+c [limits] no conflict limit
+c [limits] no propagation limit
+c [limits] simplification not delayed since 'simpdelay' zero
+c [set-maximum-score] maximum score limit 1.000000d+500
+c [set-minimum-score] minimum score limit 1.000000d-500
+c 
+c  seconds         irredundant            redundant clauses   glue   iterations"      MB    stability
+c          variables clauses conflicts  large ternary binary     jlevel       jlevel'  agility     tlevel
+c 
+c  *    0.0     199      292         0       0      0     0    0     0      0     0    0   1     0      0
+c  0    0.0      15      292         0       0      0     0    0     0      0     0    0   4     0      0
+c 
+c  seconds         irredundant            redundant clauses   glue   iterations"      MB    stability
+c          variables clauses conflicts  large ternary binary     jlevel       jlevel'  agility     tlevel
+c 
+s UNSATISFIABLE
+c
+c agil: 3.53% agility
+c bate: 0 basic ate = 0 trn 0% + 0 lrg 0% in 0 updates
+c bcas: 0 count, 0 added (0 skipped), 0 steps
+c bkwd: tried 0 clauses, 0 lits, 0.00 lits/clause
+c bkwd: checked 0 occs, 0.00 occs/clause, 0.00 occs/lit
+c bkwd: subsumed 0 binary, 0 ternary, 0 large
+c bkwd: strengthened 0 binary, 0 ternary (0% self), 0 large (0% self)
+c blkd: 0 bces, 0 removed, 0 resolutions, 0 steps
+c blkd: 0 blocking literals 0%, 0 pure
+c bump: 0 bumped seen, 0 lits 0.0 on average
+c card: 0 count, 0 units, 0 am1, 0 steps
+c card: 0 rescheduled, 0 eliminated, 0 resolved, 0 subsumed
+c card: 0 at-most-one constraints found, average size 0.00
+c card: 0 at-most-one constraints used 0%, average size 0.00
+c card: 0 at-most-two constraints found, average size 0.00
+c card: 0 at-most-two constraints used 0%, average size 0.00
+c cces: 0 cces, 0 eliminated, 0 ate 0%, 0 abce 0%
+c cces: 0 probed, 0 lifted, 0 failed
+c cces: 0 cached, 0 rsz, 0 cols 0%, 0 srch, 0 hits 0%
+c clls: 1 sat, 0 simp, 0 freeze, 0 melt
+c clls: 1292 add, 0 assume, 0 deref, 0 failed
+c clls: 0 lkhd, 0 cassume, 0 mosat
+c coll: 0 gcs, 0 rescored clauses, 0 rescored vars
+c dcps: 0 decompositions, 0 equivalent 0%
+c deco: 0 decision-only clauses 0%, 0% reduction
+c decs: 0 total, 0 rnd 0.000%, 0 heap 0.000%lld queue 0.000%
+c elms: 0 elims, 0 eliminated 0%, 0 pure 0%
+c elms: 0 rounds, 0.0 rounds/bve
+c elms: 0 small 0%, 0 large 0%
+c elms: 0 tried small, 0 succeeded 0%, 0 failed 0%
+c elms: 0 subsumed, 0 strengthened, 0 blocked
+c elms: 0 copies, 0 resolutions, 0 ipos
+c elms: 0 subchks, 0 strchks
+c gaus: 0 extractions, 0 extracted, 0.0 size, 0 max
+c gaus: 0 exactly-1 constraints of average arity 0.0
+c gaus: exported 0 units, 0 binary and 0 ternary equations
+c gaus: 0 gc, 0 steps, 0 extr 0%, 0 elim 0%
+c glue: 0.0 orig avg, 0.0 real avg, 0.0 scaled avg
+c glue: 0 maxscaledglue=15 (0%), 0 kept 0%
+c hbrs: 0 = 0 simple 0% + 0 trn 0% + 0 lrg 0%, 0 sub 0%
+c locs: 0 count, 0 flips, 0 mems, 2147483647 minimun
+c lrnd: 0 clauses, 0.0 length
+c lrnd: 0 lits = 0 orig - 0 removed 0%
+c lrnd: 0 uips 0%, 0 flips 0%
+c mins: 0 mins 0%, 0 bin 0%, 0 size 0%
+c mins: 0 poisoned searches, 0 hits, 0% hit rate
+c mins: 0 used twice searches, 0 hits, 0% hit rate
+c move: moved 0, 0 bin 0%, 0 trn 0%
+c otfs: 0 driving 0%, 0 restarting 0%
+c otfs: str 0, 0 red 0%, 0 irr 0%
+c otfs: str 0, 0 bin 0%, 0 trn 0%, 0 lrg 0%
+c otfs: sub 0, 0 red 0%, 0 irr 0%
+c otfs: sub 0, 0 bin 0%, 0 trn 0%, 0 lrg 0%
+c phas: 0 computed, 0 set, 0 pos (0%), 0 neg (0%)
+c prbs: 0 basic, 0 probed, 0 failed, 0 lifted
+c prbs: 0 simple, 0 probed, 0 failed, 0 eqs
+c prbs: 0 treelook, 0 probed, 0 failed, 0 lifted
+c prom: 0 locked 0% out of 0 tried
+c prps: 269 props, 0 props/dec
+c prps: 100% srch, 0% simp, 0% lkhd
+c quat: 0 count, 0 quat, 0 self1, 0 self2, 0 dup
+c queu: 0 flushed, 0 sorted, 0 decisions 0.000%
+c redc: 0 clauses 0%, 0 tried 0%, 0 sat 0%
+c redc: 0 lits 0%, 0 tried 0%, 0 sat 0%
+c redc: 0 times jump level reduced, 0.0 levels on average
+c reds: 0 count, 0.0 conflicts per reduce, 0 reset
+c reds: 0 memlim 0%, 0 arith 0%
+c reds: 0 collected 0%, 0 retired 0%
+c rmbd: 0 removed, 0 red 0%
+c rsts: 0 restarts 0% of checked, 0 skipped 0%
+c rsts: 0 checks 0%, 0 forced 0%
+c rsts: 0 not forced (0% of checked, 0% of skipped)
+c rsts: 0 agile 0% of skipped, 0 delayed 0%
+c rsts: 0 blocked 0.00% restart, 0 reused 0%
+c rsts: 0 partial reuse 0.0% of restarts, kept 0.0%
+c rsts: 0 delta 0.0 avg, 0 penalty 0.0 avg
+c scic: 1 set, 25.0% min, 25.0% max
+c simp: 0 count, 0 confs 0%, 0 vars 0%
+c simp: 0 its 0%, 0 bin 0%, 0 trns 0%
+c subl: 0 count (0 tried 0.0), 0 sub out of 0 (0.0%)
+c swps: 0 count, 0 rounds, 0 queries (0.0/round)
+c swps: 0 sat calls, 0 unsat (0.0% success rate)
+c swps: 0 decisions 0.0, 0 conflicts 0.0
+c swps; 0.0 avg class size, 0.0 avg environment size
+c swps: 0 failed, 0 impls, 0 equivs
+c swp0: 0 type 0 queries, 0 unsat (0.0%), 0 sat (0.0%)
+c swp1: 0 type 1 queries, 0 unsat (0.0%), 0 sat (0.0%)
+c swp2: 0 type 2 queries, 0 unsat (0.0%), 0 sat (0.0%)
+c sync: 0 produced units, 0 successful consumptions 0%
+c sync: 0 consume units calls, 0 tried 0%, 0 success 0%
+c sync: 0 produced clauses, 0 successful consumptions 0%
+c sync: 0 consume clause calls, 0 tried 0%, 0 success 0%
+c time: 8 calls to obtain time
+c tops: 294 fixed 95%, 0 its, 0.00 confs/it
+c trds: 0 transitive reductions, 0 removed, 0 failed
+c trds: 0 nodes, 0 edges, 0 steps
+c trim: 0 words, 0.0 MB
+c trnr: 0 count, 0 bin, 0 trn, 0 steps
+c unhd: 0 count, 0 rounds, 0 steps
+c unhd: 0 non-trivial sccs of average size 0.0
+c unhd: 0 units, 0 bin, 0 trn, 0 lrg
+c unhd: 0 failed, 0 stamp, 0 lits, 0 bin, 0 trn, 0 lrg
+c unhd: 0 tauts, 0 bin 0%, 0 trn 0%, 0 lrg 0%
+c unhd: 0 tauts, 0 stamp 0%, 0 red 0%
+c unhd: 0 hbrs, 0 trn 0%, 0 lrg 0%, 0 red 0%
+c unhd: 0 str, 0 bin 0%, 0 trn 0%, 0 lrg 0%, 0 red 0%
+c vars: 15 remaining 5% and 294 removed 95% out of 309
+c vars: 294 fixed 95%, 0 eliminated 0%, 0 equivalent 0%
+c vsts: 441 visits, 100% srch, 0% simp, 0% lkhd
+c vsts: 1.6 search visits per propagation, 0.0 per conflict
+c wchs: 1172 pushed, 1076 enlarged, 0 defrags
+c 
+c scaled glue      added       reduced       retired       forcing      resolved     conflicts   maxmb
+c 
+c all              0             0             0             0             0             0
+c 
+c  0 0             0   0<        0   0<        0   0<        0   0<        0   0<        0   0<    0.0
+c 
+c avg                  0.0           0.0           0.0           0.0           0.0           0.0
+c std                  0.0           0.0           0.0           0.0           0.0           0.0
+c 
+c    0.000   0% bca
+c    0.000   0% block
+c    0.000   0% card
+c 
+c    0.000 < 1% rest (not shown)
+c ==================================
+c    0.000  33% preprocessing   100%
+c    0.000   0% inprocessing      0%
+c ==================================
+c    0.000  33% simplifying
+c    0.000   0% search
+c ==================================
+c    0.000 100% all
+c 
+c             0 conflicts,           0.0 confs/sec
+c             0 ternaries,           0.0 confs/ternary
+c             0 binaries,            0.0 confs/binary
+c             0 iterations,          0.0 confs/iteration
+c 
+c             0 reductions,          0.0 redus/sec,      0.0 confs/reduction
+c             0 restarts,            0.0 rests/sec,      0.0 confs/restart
+c             0 decisions,           0.0 decis/sec,      0.0 decis/conflict
+c           269 propagations,  2690000.0 props/sec,      0.0 props/decision
+c 
+c 0.0 seconds, 0.1 MB

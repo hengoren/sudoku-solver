@@ -5,6 +5,7 @@ import scriptfunctions
 import rulesofsudoku
 import makecnfclues
 import generateboard
+import hashlib
 
 def make_cnf_file(puzzle, cnffilename):
 	rulesstring = rulesofsudoku.gen_all_rules(2)
@@ -24,9 +25,14 @@ def make_cnf_file(puzzle, cnffilename):
 #         puzzlestring += (str)val
 #   return puzzlestring
 
+def puzzle_encoding(puzzle):
+	puzzlestring = ''.join(str(elem) for row in puzzle for elem in row)
+	return hashlib.md5(puzzlestring).hexdigest()
+
 
 def testuniqueness(puzzle):
-	cnfin = "insertname.cnf"
+	puzzlename = puzzle_encoding(puzzle)
+	cnfin = puzzlename + ".cnf"
 	make_cnf_file(puzzle, cnfin)
 	threecnf = "threecnf" + cnfin
 	output = "output" + cnfin

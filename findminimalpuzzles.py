@@ -6,6 +6,8 @@ import copy
 # output: prints a list of puzzles for that board
 board = [[1, 2, 3, 4], [3, 4, 1, 2], [2, 1, 4, 3], [4, 3, 2, 1]]
 
+counterlist = [0 for j in range(17)]
+
 def gen_puzzles(board,removal_marks = [[0 for j in range(4)] for i in range(4)]):
   # print("Calling gen_puzzles")
   print "Board: ", board
@@ -19,7 +21,7 @@ def gen_puzzles(board,removal_marks = [[0 for j in range(4)] for i in range(4)])
     ycoor = i % 4
     if removal_marks[xcoor][ycoor] != 0:
       modified_cells.append(i)
-  print("Modified Cells: ", modified_cells)
+  print "Modified Cells: ", modified_cells
   if not modified_cells:
     recent_modification = -1
   else:
@@ -44,8 +46,19 @@ def gen_puzzles(board,removal_marks = [[0 for j in range(4)] for i in range(4)])
       # i is unremovable
       removal_marks[xcoor][ycoor] = -1
   if not found_removable:
-    return removal_marks # this puzzle is now minimal
+    unremovablecount = count_removal_marks(removal_marks)
+    counterlist[unremovablecount] += 1
+    print "Removal Marks: ", removal_marks
+    print "Counter list: ", counterlist
+    return removal_marks, counterlist # this puzzle is now minimal
 
+def count_removal_marks(removal_marks):
+  count = 0
+  for i in range(len(removal_marks)):
+      for j in range(len(removal_marks[i])):
+        if removal_marks[i][j] == -1:
+          count += 1
+  return count
 
 def create_puzzle_from_board(board, removal_marks):
   for i in range(len(removal_marks)):
