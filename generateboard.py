@@ -1,3 +1,6 @@
+#!/usr/bin/python
+
+
 import makecnfclues
 import rulesofsudoku
 import sys

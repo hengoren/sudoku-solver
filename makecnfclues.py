@@ -1,3 +1,6 @@
+#!/usr/bin/python
+
+
 # def get_board_from_file(thefile):
 # 	boardlist = [[]]
 # 	file = open(thefile, 'r')

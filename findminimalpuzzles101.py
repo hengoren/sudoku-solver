@@ -1,4 +1,5 @@
 # findminimalpuzzles101.py
+#!/usr/bin/python
 
 import unique
 import copy

@@ -1,3 +1,6 @@
+#!/usr/bin/python
+
+
 def gen_neg_clauses(t):
     thestring = ""
     for x in range(t**2):
