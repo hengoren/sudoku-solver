@@ -37,13 +37,6 @@ def gen_pos_clauses(t):
     return thestring
 
 
-
-# if elem == (len(input_list) - 1):
-# 				thestring = thestring + strtoappend
-# 			else:
-# 				thestring = thestring + strtoappend + "\n"
-
-
 def gen_all_rules(t):
 	returnstring = ""
 	postring = gen_pos_clauses(t)
