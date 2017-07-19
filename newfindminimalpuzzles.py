@@ -58,10 +58,10 @@ def gen_puzzles(board, removal_marks = [[0 for j in range(4)] for i in range(4)]
 	if not found_removable and not duplicate_puzzle:
 		finished_bool = '0' in stringify_matrix(temp_removal_marks)
 		removal_marks_dict[stringify_matrix] = finished_bool
-		return "Removal marks: ", removal_marks
+		# return "Removal marks: ", removal_marks
 		index = count_neg_ones(removal_marks)
 		counterlist[index] += 1
-		# return counterlist
+		return counterlist
 
 
 
