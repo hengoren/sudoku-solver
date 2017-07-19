@@ -29,26 +29,31 @@ def gen_puzzles(board, removal_marks = [[0 for j in range(4)] for i in range(4)]
 		
 		xcoor = i / 4
 		ycoor = i % 4
+		# print "index: (" + str(xcoor) + ", " + str(ycoor) +")"
 		temp_removal_marks = copy.deepcopy(removal_marks)
+		# print_all_rm()
 
-		if not removal_marks_dict.haskey(stringify_matrix(temp_removal_marks)):
-			if (removal_marks[xcoor][ycoor] == 0):
-				temp_removal_marks[xcoor][ycoor] = 1
-				
+		if (removal_marks[xcoor][ycoor] == 0):
+			temp_removal_marks[xcoor][ycoor] = 1
+			if not removal_marks_dict.has_key(stringify_matrix(temp_removal_marks)):
+			
 				puzzle = create_puzzle_from_board(board, temp_removal_marks)
 
 				boolunique = unique.testuniqueness(puzzle)
 
 				if boolunique:
 					found_removable = True
-					if not removal_marks_dict.haskey(stringify_matrix(temp_removal_marks)):
-						finished_bool = '0' in stringify_matrix(temp_removal_marks)
+					if not removal_marks_dict.has_key(stringify_matrix(temp_removal_marks)):
+						print "Recursing..."
+						print temp_removal_marks
+						finished_bool = not ('0' in stringify_matrix(temp_removal_marks))
 						removal_marks_dict[stringify_matrix(temp_removal_marks)] = finished_bool
 						print gen_puzzles(board, temp_removal_marks)
 				else:
 					removal_marks[xcoor][ycoor] = -1
-		else:
-			duplicate_puzzle = True
+			else:
+				duplicate_puzzle = True
+
 
 	if not found_removable and not duplicate_puzzle:
 		finished_bool = '0' in stringify_matrix(temp_removal_marks)
@@ -92,5 +97,6 @@ def stringify_matrix(removal_marks):
 			outstring += str(removal_marks[x][y])
 	return outstring
 
+print gen_puzzles(board, removal_marks = [[0 for j in range(4)] for i in range(4)])
 
 
