@@ -45,7 +45,7 @@ def gen_puzzles(board, removal_marks = [[0 for j in range(4)] for i in range(4)]
 					found_removable = True
 					if not removal_marks_dict.has_key(stringify_matrix(temp_removal_marks)):
 						print "Recursing..."
-						print temp_removal_marks
+						# print temp_removal_marks
 						finished_bool = not ('0' in stringify_matrix(temp_removal_marks))
 						removal_marks_dict[stringify_matrix(temp_removal_marks)] = finished_bool
 						print gen_puzzles(board, temp_removal_marks)
